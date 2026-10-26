@@ -1,0 +1,86 @@
+
+:root{--paper:#f3ead7;--paper2:#ebdfc4;--ink:#2a2118;--ink2:#5b4a3a;--red:#a8261c;--red2:#7d1a13;--line:#cdbb98;--card:#fbf6ea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1d1814;--paper2:#26201a;--ink:#efe4cf;--ink2:#bfae93;--red:#d4473a;--red2:#e3685c;--line:#4a3d30;--card:#241e18}}
+:root[data-theme="dark"]{--paper:#1d1814;--paper2:#26201a;--ink:#efe4cf;--ink2:#bfae93;--red:#d4473a;--red2:#e3685c;--line:#4a3d30;--card:#241e18}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif;
+ background-image:radial-gradient(rgba(120,90,50,.06) 1px,transparent 1px);background-size:5px 5px}
+a{color:var(--red)}code{font-size:.82em;word-break:break-all;background:var(--paper2);padding:1px 4px;border-radius:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header.hero{padding:44px 0 40px;border-bottom:3px double var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center}
+.kicker{font-family:"Nanum Myeongjo",serif;color:var(--red);font-weight:700;letter-spacing:.3em;font-size:14px}
+h1{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:clamp(34px,6vw,56px);line-height:1.15;margin:.2em 0 .1em;text-wrap:balance}
+h1 small{display:block;font-size:.45em;color:var(--ink2);font-weight:700;margin-top:.4em}
+.lead{color:var(--ink2);max-width:34em}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:4px;text-decoration:none;font-weight:700;border:2px solid var(--red)}
+.btn.main{background:var(--red);color:#fff}.btn.sub{color:var(--red)}
+.hero figure{margin:0;position:relative}
+.hero figure img{width:100%;height:auto;image-rendering:pixelated;border:6px solid var(--card);box-shadow:0 0 0 1px var(--line),0 14px 30px rgba(60,30,10,.18)}
+.stamp{position:absolute;right:-14px;bottom:-14px;width:72px;height:72px;background:var(--red);color:#fff;font:800 30px/72px "Nanum Myeongjo",serif;text-align:center;border-radius:6px;transform:rotate(-6deg);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+h2{font-family:"Nanum Myeongjo",serif;font-size:28px;margin:0 0 18px;display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:10px;height:28px;background:var(--red);display:inline-block}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
+.info{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;background:var(--card);border:1px solid var(--line);padding:18px 20px}
+.info dt{color:var(--red);font-weight:700}.info dd{margin:0}
+ul{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
+.note{color:var(--ink2);font-size:14px;border-left:3px solid var(--line);padding-left:12px}
+.scen{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.seal{background:var(--card);border:1px solid var(--line);padding:16px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.seal .mark{width:56px;height:56px;border:3px solid var(--red);color:var(--red);font:800 26px/50px "Nanum Myeongjo",serif;border-radius:4px}
+.seal.new .mark{background:var(--red);color:#fff}
+.seal .yr{font-weight:700}.seal .ds{font-size:13px;color:var(--ink2)}
+.dream{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+.dream th,.dream td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.dream th{width:5.5em;color:var(--red);font-family:"Nanum Myeongjo",serif}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.shots figure{margin:0}.shots img{width:100%;height:auto;image-rendering:pixelated;border:1px solid var(--line);display:block}
+.shots figcaption{font-size:13px;color:var(--ink2);text-align:center;margin-top:4px}
+.steps{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:14px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);padding:16px 18px 16px 70px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:16px;width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;font:800 18px/36px "Nanum Myeongjo",serif;text-align:center}
+.steps h4{margin:0 0 4px;font-size:17px}.steps p{margin:0;color:var(--ink2)}
+.chg{margin-bottom:14px}.chg b{font-family:"Nanum Myeongjo",serif;color:var(--red);font-size:18px}
+footer{padding:36px 0 48px;color:var(--ink2);font-size:14px}
+@media (max-width:760px){.hero .wrap,.two{grid-template-columns:1fr}.hero figure{max-width:320px}.scen,.shots{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- 사이트 공통: 상단 바, 작품 메뉴, 목차 ---- */
+html{scroll-padding-top:112px}
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:3px double var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:58px}
+.brand{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.brand i{font-style:normal;width:26px;height:26px;background:var(--red);color:#fff;border-radius:4px;display:grid;place-items:center;font-size:14px;transform:rotate(-4deg)}
+.crumb{font-size:15px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.crumb b{color:var(--ink)}
+.sp{flex:1}
+.menu{position:relative}
+.menu>button{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.menu>button:hover,.menu.open>button{border-color:var(--red);color:var(--red)}
+.menu .list{display:none;position:absolute;right:0;top:calc(100% + 8px);width:min(320px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);box-shadow:0 12px 28px rgba(40,20,5,.18);padding:8px}
+.menu.open .list{display:block}
+.menu .list h6{margin:4px 8px 6px;font-size:12px;color:var(--ink2);font-weight:500;letter-spacing:.1em}
+.menu .list a{display:block;padding:8px 10px;color:var(--ink);text-decoration:none;border-radius:4px}
+.menu .list a small{display:block;color:var(--ink2);font-size:12px}
+.menu .list a:hover,.menu .list a[aria-current]{background:var(--paper2)}
+.menu .list a[aria-current]{border-left:3px solid var(--red)}
+.pwr{font-size:12px;color:var(--ink2);text-decoration:none;border:1px solid var(--line);background:var(--card);padding:3px 10px;border-radius:99px;white-space:nowrap}
+.pwr:hover{color:var(--red);border-color:var(--red)}
+.toc{position:sticky;top:61px;z-index:15;background:var(--paper);border-bottom:1px solid var(--line)}
+.toc .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;height:46px;align-items:center}
+.toc .wrap::-webkit-scrollbar{display:none}
+.toc span{font-size:12px;color:var(--ink2);margin-right:6px;white-space:nowrap;letter-spacing:.1em}
+.toc a{font-size:14px;color:var(--ink2);text-decoration:none;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.toc a:hover{color:var(--ink)}.toc a.on{background:var(--red);color:#fff}
+/* ---- 첫 화면(작품 목록) ---- */
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.game{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.game:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(60,30,10,.15)}
+.game img{width:100%;height:auto;image-rendering:pixelated;display:block;border-bottom:1px solid var(--line)}
+.game div{padding:14px 16px 16px}.game h3{font-family:"Nanum Myeongjo",serif;margin:0 0 4px;font-size:20px}
+.game h3 small{font-size:14px;color:var(--ink2);font-weight:700}
+.game .v{display:inline-block;font-size:12px;color:var(--red);border:1px solid var(--red);padding:0 6px;margin-bottom:6px}
+.game p{margin:0;color:var(--ink2);font-size:14px}
+.soon{border:1px dashed var(--line);display:grid;place-items:center;color:var(--ink2);min-height:160px;font-size:14px}
+@media (max-width:640px){.menu{position:static}.menu .list{position:fixed;left:16px;right:16px;top:64px;width:auto}.bar .wrap{gap:8px}.menu>button{padding:5px 9px;font-size:13px}.crumb{display:none}.brand{font-size:17px}.pwr{font-size:11px;padding:3px 8px}html{scroll-padding-top:110px}}
