@@ -3,8 +3,14 @@
 (function(){
   var el=document.querySelector('.visits'); var gc=document.documentElement.getAttribute('data-gc');
   if(!el||!gc||!window.fetch)return;
-  fetch('https://'+gc+'.goatcounter.com/counter/TOTAL.json').then(function(r){if(!r.ok)throw 0;return r.json()})
-   .then(function(j){if(j&&j.count){el.querySelector('b').textContent=j.count;el.hidden=false}}).catch(function(){});
+  var b=el.querySelector('b');
+  /* GoatCounter 서버는 같은 주소의 응답을 4시간 캐시한다(기록이 없던 때의 404 포함).
+     end=내일(UTC) 을 붙이면 날마다 새 캐시 키가 되고, 범위는 '처음부터 내일까지'라 전체 누적과 같다. */
+  var t=new Date(Date.now()+864e5).toISOString().slice(0,10);
+  fetch('https://'+gc+'.goatcounter.com/counter/TOTAL.json?end='+t,{cache:'no-store'}).then(function(r){
+     if(r.status===404){b.textContent='집계 중';el.hidden=false;return null}   /* 아직 기록 없음 또는 공개 설정 꺼짐 */
+     if(!r.ok)throw 0;return r.json()})
+   .then(function(j){if(j&&j.count!=null){b.textContent=j.count;el.hidden=false}}).catch(function(){});
 })();
 (function(){
   var m=document.querySelector('.menu'); if(m){var b=m.querySelector('button');
