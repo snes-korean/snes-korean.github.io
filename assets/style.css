@@ -88,3 +88,7 @@ html{scroll-padding-top:112px}
 @media (max-width:430px){.brand span{display:none}}
 @media (max-width:380px){.bar .wrap{gap:5px!important}.menu>button{font-size:12px!important;padding:4px 7px!important}.visits,.pwr{font-size:10.5px!important;padding:3px 6px!important}}
 @media (max-width:640px){.visits{font-size:11px;padding:3px 7px}.menu{position:static}.menu .list{position:fixed;left:16px;right:16px;top:64px;width:auto}.bar .wrap{gap:8px}.menu>button{padding:5px 9px;font-size:13px}.crumb{display:none}.brand{font-size:17px}.pwr{font-size:11px;padding:3px 8px}html{scroll-padding-top:110px}}
+
+.game .d{display:inline-block;font-size:12px;color:var(--ink2);margin:0 0 6px 8px}
+.chg .date{font-size:13px;color:var(--ink2);margin-left:6px}
+.list small{white-space:nowrap}
