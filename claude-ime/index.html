@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko" data-gc="snes-korean"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude 앱 한글 입력 꼬임 대처 · SNES 한글화</title>
+<meta name="description" content="Claude 앱 사용 중 윈도우 한글 입력이 꼬여 엔터가 저절로 눌리고 자모가 분리될 때 대처법과 재발 방지 스크립트">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script data-goatcounter="https://snes-korean.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>.code{font-family:Consolas,"D2Coding",ui-monospace,monospace;background:var(--paper2);border:1px solid var(--line);border-radius:4px;padding:12px 14px;overflow-x:auto;font-size:13px;line-height:1.5;white-space:pre}.tl li{margin:6px 0}</style>
+</head><body>
+<div class="bar"><div class="wrap">
+ <a class="brand" href="../"><i>韓</i><span>SNES 한글화</span></a><span class="crumb">&nbsp;›&nbsp; <b>Claude 한글 입력 꼬임</b></span><span class="sp"></span>
+ <nav class="menu" aria-label="작품 목록"><button type="button" aria-expanded="false" aria-haspopup="true">작품 목록 ▾</button>
+  <div class="list"><h6>한글화한 작품</h6><a href="../eternia/">테일즈 오브 이터니아 (PSP·편의/부스트)<small>v1.1 · 2026-11-09</small></a><a href="../rs3/">로맨싱 사가 3 개조판 (치트·공략)<small>v2.2.1 · 2026-11-13</small></a><a href="../seiken3/">성검전설3 (치트)<small>v1.1 · 2026-11-01</small></a><a href="../ogre/">전설의 오우거 배틀 (치트·공략)<small>v1.4.2 · 2026-11-03</small></a><a href="../chrono/">크로노 트리거+ (CT+)<small>v1.7 · 2026-10-26</small></a><a href="../tenchi-ex/">천지를 먹다 확장판 (삼국지군웅전)<small>v2.7.2 · 2026-10-27</small></a><a href="../tenchi/">천지를 먹다 (삼국지군웅전)<small>v1.3.2 · 2026-10-26</small></a><h6>팁</h6><a href="../claude-ime/" aria-current=page>Claude 앱 한글 입력 꼬임 대처<small>엔터 무한 입력 · 자모 분리</small></a><h6>참여</h6><a class="req" href="../request/">요청·제보<small>한글화 요청 · 버그 제보</small></a></div></nav>
+ <span class="visits" hidden title="누적 방문자 (GoatCounter, 최대 4시간 늦게 반영)">누적 방문 <b>-</b></span>
+ <a class="pwr" href="https://claude.ai" target="_blank" rel="noopener">Powered by Claude</a>
+</div></div>
+<header class="hero"><div class="wrap" style="grid-template-columns:1fr">
+ <div><div class="kicker">TIP · WINDOWS 한글 입력</div><h1>Claude 앱 한글 입력 꼬임 대처<small>엔터가 저절로 눌리고 자모가 분리될 때</small></h1>
+ <p class="lead">Claude 데스크톱 앱으로 PC에 연결해 오래 작업하다 보면, 윈도우 한글 입력이 시스템 전체에서 꼬일 수 있습니다. 겪었던 증상과 당장 푸는 순서, 재발했을 때 바로 정리해 주는 스크립트를 정리했습니다.</p></div>
+</div></header>
+<nav class="toc" aria-label="목차"><div class="wrap"><span>목차</span><a href="#symptom">증상</a><a href="#cause">원인</a><a href="#fix">당장 푸는 순서</a><a href="#guard">재발 방지 스크립트</a><a href="#ask">내 PC에 맞게 만들기</a><a href="#code">스크립트 원본</a><a href="#limit">한계·출처</a></div></nav>
+<main>
+<section id="symptom"><div class="wrap"><h2>증상</h2>
+ <ul class="tl"><li>엔터가 저절로 계속 눌리거나, 쓰는 중에 줄이 저절로 바뀝니다.</li><li>한글이 "ㄸㅗ ㅇㅏㄴㄷㅙ"처럼 자음과 모음이 따로 입력됩니다.</li><li><b>키보드를 뽑아도 계속됩니다.</b> 키보드 고장이 아니라 PC 안에서 입력이 꼬인 것입니다.</li><li>재부팅으로 안 풀린 적이 있고, 로그아웃 후 다시 로그인하자 풀렸습니다.</li></ul>
+ <p class="note-list">겪은 환경: Windows PC, Microsoft 한글 입력기, Claude 데스크톱 앱으로 PC에 원격 연결해 장시간 작업 중. 2026-11-14, 11-15 이틀 연속 발생.</p>
+</div></section>
+<section id="cause"><div class="wrap"><h2>원인으로 보이는 것</h2>
+ <p>확정은 아니지만 두 가지가 같은 방향을 가리킵니다.</p>
+ <ol class="steps"><li><b>같은 증상의 버그 보고가 있습니다.</b> Claude 앱 이슈 #84395는 한글 입력기가 시스템 전체에서 깨져 다른 앱에서도 자모가 분리된다는 보고입니다. 보고자는 Claude 앱(Electron)의 한글 조합 처리나 전역 키보드 후킹이 윈도우 입력 서비스(<code>textinputhost.exe</code>, <code>ctfmon.exe</code>)와 꼬이는 것을 의심했습니다. 이슈 #83712는 쌍자음(ㅃㅉㄸㄲㅆ)을 치면 엔터 없이 줄이 바뀐다는 보고입니다.</li><li><b>효과 있던 조치가 입력 서비스 정리였습니다.</b> 발생 당시 작업 관리자에 <code>ctfmon.exe</code>가 3개 떠 있었고, 중복을 끄자 엔터 무한 입력이 멈췄습니다.</li></ol>
+ <p>원인이 Claude 앱 내부라면 사용자가 원천 차단할 수는 없습니다. 아래 스크립트는 생기면 바로 정리하는 방식입니다.</p>
+</div></section>
+<section id="fix"><div class="wrap"><h2>당장 푸는 순서</h2>
+ <p>순서대로 해 보고, 풀리면 거기서 멈추세요.</p>
+ <ol class="steps"><li>Claude 데스크톱 앱을 완전히 종료합니다 (트레이 아이콘에서도 종료).</li><li><code>Ctrl+Shift+Esc</code> → 작업 관리자 → 세부 정보 탭에서 <code>ctfmon.exe</code>가 여러 개면 하나만 남기고 작업 끝내기.</li><li>그래도 안 되면 <code>ctfmon.exe</code>와 <code>TextInputHost.exe</code>를 모두 끕니다. 윈도우가 자동으로 다시 띄웁니다.</li><li>그래도 안 되면 로그아웃 후 다시 로그인합니다.</li></ol>
+</div></section>
+<section id="guard"><div class="wrap"><h2>재발 방지 스크립트 <small class="tag">Windows · PowerShell</small></h2>
+ <p>파워셸 스크립트 3개와 설치용 배치 파일 1개입니다. 압축을 풀고 <code>install.bat</code>을 더블클릭하면 설치됩니다. 관리자 권한은 필요 없습니다.</p>
+ <div class="btns"><a class="btn main" href="ime-guard.zip" download>ime-guard.zip 받기</a></div>
+ <table class="dream wide"><tbody>
+ <tr><th>ime_guard.ps1</th><td>5초마다 <code>ctfmon.exe</code> 개수를 확인해, 2개 이상이면 가장 오래된 것만 남기고 끕니다. 로그온할 때 자동으로 시작하고 창 없이 계속 돕니다.</td></tr>
+ <tr><th>ime_panic.ps1</th><td>비상 리셋. <code>ctfmon.exe</code>와 <code>TextInputHost.exe</code>를 끄고 <code>ctfmon</code>을 다시 켭니다. 끝나면 "삑" 소리가 납니다. <code>Ctrl+Alt+F12</code> 또는 바탕화면 "입력 비상 리셋" 아이콘으로 실행합니다.</td></tr>
+ <tr><th>ime_install.ps1</th><td>위 두 파일을 <code>%LOCALAPPDATA%\ImeGuard</code>에 복사하고, 시작프로그램 등록과 단축키 바로가기를 만듭니다. 설치 결과(등록 여부, 감시 실행 여부)를 화면에 보여 줍니다.</td></tr>
+ <tr><th>install.bat</th><td>더블클릭용. 같은 폴더의 <code>ime_install.ps1</code>을 실행합니다.</td></tr>
+ </tbody></table>
+ <ul class="note-list"><li>조치 기록은 <code>%LOCALAPPDATA%\ime_guard.log</code>에 남습니다. 다시 터졌을 때 중복 <code>ctfmon</code> 때문이었는지 가리는 자료가 됩니다.</li><li>단축키는 시작 메뉴 바로가기에만 동작해서 시작 메뉴와 바탕화면 둘 다 만듭니다.</li><li>삭제: 시작프로그램 폴더(<code>shell:startup</code>)의 <code>ImeGuard.lnk</code>, 시작 메뉴·바탕화면의 "입력 비상 리셋" 바로가기, <code>%LOCALAPPDATA%\ImeGuard</code> 폴더를 지우고 로그아웃하면 됩니다.</li></ul>
+</div></section>
+<section id="ask"><div class="wrap"><h2>내 PC에 맞게 Claude에게 만들어 달라고 하기</h2>
+ <p>PC마다 권한, 단축키 충돌, 회사 보안 정책이 다르니 아래 문장을 Claude에게 보내 각자 환경에 맞게 만드세요. 대괄호 부분만 바꾸면 됩니다. 위 스크립트 원본을 같이 붙여 넣으면 더 빨리 만들어 줍니다.</p>
+ <div class="code">Windows에서 Claude 앱을 쓰는 중에 한글 입력이 시스템 전체에서 꼬여
+엔터가 저절로 입력되고 자음·모음이 분리되는 증상이 있어.
+키보드를 뽑아도 계속되고, 작업 관리자에 ctfmon.exe가 여러 개 떠 있었어.
+
+내 환경에 맞는 재발 방지 프로그램을 만들어줘.
+- 로그온 때 자동 시작해서 ctfmon.exe 중복을 [5]초마다 정리하는 감시 스크립트
+- 터졌을 때 누르는 비상 리셋(ctfmon, TextInputHost 재시작) + 단축키 [Ctrl+Alt+F12]
+- 조치 기록을 로그 파일로 남기기
+- 더블클릭 한 번으로 설치, 삭제 방법도 알려주기
+
+내 환경: [Windows 10/11], [관리자 권한 있음/없음],
+[이미 Ctrl+Alt+F12를 쓰는 프로그램 있음/없음],
+[회사 PC라 시작프로그램 등록이 막혀 있을 수 있음 — 해당 시]</div>
+ <ul class="note-list"><li>회사 PC는 파워셸 실행이나 시작프로그램 등록이 막혀 있을 수 있습니다. IT 담당자에게 먼저 확인하세요.</li><li>단축키가 안 먹으면 다른 프로그램이 같은 키를 쓰는 것입니다. 다른 조합으로 바꾸세요.</li><li>5초 간격 감시는 프로세스 목록을 한 번 보는 정도라 부담이 거의 없습니다.</li></ul>
+</div></section>
+<section id="code"><div class="wrap"><h2>스크립트 원본</h2>
+ <p>zip 안의 파일과 같습니다. 직접 저장할 때는 한글 주석 때문에 UTF-8(BOM 포함)으로 저장하세요.</p>
+ <h3>ime_guard.ps1 <small>(감시)</small></h3><div class="code"># ctfmon 중복 감시: 2개 이상이면 가장 오래된 것만 남기고 종료
+$log = "$env:LOCALAPPDATA\ime_guard.log"
+while ($true) {
+  try {
+    $p = @(Get-Process ctfmon -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -eq (Get-Process -Id $PID).SessionId } | Sort-Object StartTime)
+    if ($p.Count -gt 1) {
+      $p | Select-Object -Skip 1 | ForEach-Object {
+        Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue
+        Add-Content $log ("{0} ctfmon 중복 종료 PID {1}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $_.Id)
+      }
+    }
+  } catch {}
+  Start-Sleep -Seconds 5
+}</div>
+ <h3>ime_panic.ps1 <small>(비상 리셋)</small></h3><div class="code"># 비상 리셋: 입력 서비스 재시작
+$log = "$env:LOCALAPPDATA\ime_guard.log"
+Add-Content $log ("{0} 비상 리셋 실행" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'))
+Get-Process ctfmon, TextInputHost -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+Start-Sleep -Milliseconds 800
+Start-Process "$env:WINDIR\System32\ctfmon.exe"
+[console]::beep(1000,150)</div>
+ <h3>ime_install.ps1 <small>(설치)</small></h3><div class="code">$dir = "$env:LOCALAPPDATA\ImeGuard"
+New-Item -ItemType Directory -Force $dir | Out-Null
+$src = Split-Path -Parent $MyInvocation.MyCommand.Path
+Copy-Item "$src\ime_guard.ps1","$src\ime_panic.ps1" $dir -Force
+$ps = "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe"
+$sh = New-Object -ComObject WScript.Shell
+# 1) 로그온 시 감시 자동 실행 (창 숨김)
+$startup = [Environment]::GetFolderPath('Startup')
+$l = $sh.CreateShortcut("$startup\ImeGuard.lnk")
+$l.TargetPath = $ps
+$l.Arguments = "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$dir\ime_guard.ps1`""
+$l.WindowStyle = 7
+$l.Save()
+# 2) 비상 리셋 바로가기 + 단축키 Ctrl+Alt+F12 (시작 메뉴에 둬야 단축키 동작)
+$sm = [Environment]::GetFolderPath('Programs')
+foreach ($t in @("$sm\입력 비상 리셋.lnk", ([Environment]::GetFolderPath('Desktop') + "\입력 비상 리셋.lnk"))) {
+  $k = $sh.CreateShortcut($t)
+  $k.TargetPath = $ps
+  $k.Arguments = "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$dir\ime_panic.ps1`""
+  $k.WindowStyle = 7
+  if ($t -like "$sm*") { $k.Hotkey = "CTRL+ALT+F12" }
+  $k.Save()
+}
+# 3) 지금 바로 감시 시작 (중복 실행 방지)
+$running = Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" | Where-Object { $_.CommandLine -like '*ime_guard.ps1*' }
+if (-not $running) { Start-Process $ps -ArgumentList "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$dir\ime_guard.ps1`"" -WindowStyle Hidden }
+"설치 완료: $dir"
+"Startup: " + (Test-Path "$startup\ImeGuard.lnk")
+"단축키 바로가기: " + (Test-Path "$sm\입력 비상 리셋.lnk")
+"ctfmon 개수: " + @(Get-Process ctfmon -ErrorAction SilentlyContinue).Count
+"감시 실행중: " + [bool](Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" | Where-Object { $_.CommandLine -like '*ime_guard.ps1*' })</div>
+</div></section>
+<section id="limit"><div class="wrap"><h2>한계·출처</h2>
+ <ul class="tl"><li>이 스크립트는 증상을 빨리 정리하는 용도입니다. 원인이 Claude 앱 내부라면 앱이 수정되어야 완전히 없어집니다.</li><li>중복 <code>ctfmon</code> 정리는 한 PC에서 효과를 본 조치입니다. 다른 PC에서도 똑같이 통한다는 보장은 없습니다.</li><li>아래 버그 보고의 해결 여부는 확인하지 못했습니다.</li></ul>
+ <ul class="note-list"><li><a href="https://claudeissues.com/issue/84395-bug-system-wide-korean-ime-breaks-jamo-decomposition-u-3000-spaces-in-other-apps" target="_blank" rel="noopener">Claude 앱 이슈 #84395 — 한글 입력기가 시스템 전체에서 자모 분리</a></li><li><a href="https://claudeissues.com/issue/83712-korean-ime-typing-shift-modified-jamo-inserts-an-unwanted-line-break-in-the-prom" target="_blank" rel="noopener">Claude 앱 이슈 #83712 — 쌍자음 입력 시 원치 않는 줄바꿈</a></li></ul>
+ <p class="note-list">비슷한 증상을 겪었거나 다른 해결법을 찾았다면 <a href="../request/">요청·제보</a> 게시판에 남겨 주세요.</p>
+</div></section>
+</main>
+
+<div class="support"><div class="wrap"><div class="sbox"><p><b>이 패치가 도움이 되셨나요?</b> 후원해 주시면 다음 작품 한글화와 버그 수정을 이어 가는 데 쓰겠습니다.</p><a class="btn sub" href="https://buymeacoffee.com/sneskorean" target="_blank" rel="noopener">☕ 후원하기</a></div></div></div>
+<footer><div class="wrap"><ul><li>개인 경험을 정리한 비공식 팁입니다. Anthropic과 관계없습니다.</li><li>롬 파일은 배포하지 않습니다. 직접 가진 게임에서 뽑은 롬에 패치를 적용해 주세요.</li></ul><p class="flinks"><a href="../">SNES 한글화</a><span>·</span><a href="../request/">요청·제보</a><span>·</span><a href="https://buymeacoffee.com/sneskorean" target="_blank" rel="noopener">☕ 후원하기</a></p></div></footer>
+<script src="../assets/site.js"></script>
+</body></html>
