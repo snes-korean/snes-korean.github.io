@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko" data-gc="snes-korean"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파이널 판타지 X 인터내셔널 한국판 (PS2) 치트 패치 v0.4 · SNES 한글화</title>
+<meta name="description" content="파이널 판타지 X 인터내셔널 한국판(PS2, SLPM-67513)에 게임 안 치트 메뉴와 전투 후 파티 전원 AP 획득을 넣는 패치 v0.4. AP·길 1~5배, 인카운터 없음/2배, 전투 속도 1~4배, 드롭 100%, 블리츠볼 선수 영입, 칠요의 문장·인장, 스피어 판 가이드">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script data-goatcounter="https://snes-korean.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+<div class="bar"><div class="wrap">
+ <a class="brand" href="../"><i>韓</i><span>SNES 한글화</span></a><span class="crumb">&nbsp;›&nbsp; <b>파이널 판타지 X</b></span><span class="sp"></span>
+ <nav class="menu" aria-label="작품 목록"><button type="button" aria-expanded="false" aria-haspopup="true">작품 목록 ▾</button>
+  <div class="list"><h6>한글화한 작품</h6><a href="../ffx/" aria-current=page>파이널 판타지 X 인터내셔널 (PS2·치트)<small>v0.4 · 2026-11-15</small></a><a href="../eternia/">테일즈 오브 이터니아 (PSP·편의/부스트)<small>v1.1 · 2026-11-09</small></a><a href="../rs3/">로맨싱 사가 3 개조판 (치트·공략)<small>v2.2.1 · 2026-11-13</small></a><a href="../seiken3/">성검전설3 (치트)<small>v1.1 · 2026-11-01</small></a><a href="../ogre/">전설의 오우거 배틀 (치트·공략)<small>v1.4.2 · 2026-11-03</small></a><a href="../chrono/">크로노 트리거+ (CT+)<small>v1.7 · 2026-10-26</small></a><a href="../tenchi-ex/">천지를 먹다 확장판 (삼국지군웅전)<small>v2.7.2 · 2026-10-27</small></a><a href="../tenchi/">천지를 먹다 (삼국지군웅전)<small>v1.3.2 · 2026-10-26</small></a><h6>팁</h6><a href="../claude-ime/">Claude 앱 한글 입력 꼬임 대처<small>엔터 무한 입력 · 자모 분리</small></a><h6>참여</h6><a class="req" href="../request/">요청·제보<small>한글화 요청 · 버그 제보</small></a></div></nav>
+ <span class="visits" hidden title="누적 방문자 (GoatCounter, 최대 4시간 늦게 반영)">누적 방문 <b>-</b></span>
+ <a class="pwr" href="https://claude.ai" target="_blank" rel="noopener">Powered by Claude</a>
+</div></div>
+<header class="hero"><div class="wrap">
+ <div>
+  <div class="kicker">PS2 · v0.4 · 2026-11-15 배포</div>
+  <h1>파이널 판타지 X 인터내셔널<small>한국판 — 치트 메뉴·전원 AP 패치</small></h1>
+  <p class="lead">PS2 정식 한국어판 「파이널 판타지 X 인터내셔널」(SLPM-67513)에 <b>게임 안 치트 메뉴</b>를 넣고, 이 게임의 가장 귀찮은 점인 <b>"전투에 내보낸 캐릭터만 AP를 받는" 규칙을 없애</b> 전투가 끝나면 파티 전원이 AP를 받게 합니다. 메뉴(△)에서 <b>SELECT</b>를 누르면 치트 메뉴가 열립니다. 이 페이지 아래쪽에 스피어 판 쉬운 가이드도 있습니다.</p>
+  <div class="btns"><a class="btn main" href="patches/FFX_International_KR_Cheat_v0.4.xdelta" download>xdelta 패치 받기</a><a class="btn sub" href="#howto">적용 방법</a></div>
+ </div>
+ <figure><img src="img/menu.png" alt="치트 메뉴 화면" width="512" height="416"><div class="stamp">韓</div></figure>
+</div></header>
+<nav class="toc" aria-label="목차"><div class="wrap"><span>목차</span><a href="#about">게임 소개</a><a href="#ap">전원 AP</a><a href="#cheat">치트 메뉴</a><a href="#sphere">스피어 판 가이드</a><a href="#shots">화면</a><a href="#howto">적용 방법</a><a href="#known">알려진 문제</a><a href="#log">바뀐 점</a></div></nav>
+<main>
+<section id="about"><div class="wrap two"><div><h2>게임 소개</h2><p>블리츠볼 선수 티다가 1000년 뒤의 세계 스피라로 떨어져, 소환사 유나의 여행에 함께하며 「신」에 맞서는 이야기입니다. 인터내셔널판은 다크 소환수, 페넌스 같은 추가 보스와 엑스퍼트 스피어 판이 들어간 판이며, 한국에서는 정식 한국어판으로 나왔습니다. 이 패치는 번역은 건드리지 않고 치트와 편의 기능만 더합니다.</p></div><div><dl class="info"><dt>원작</dt><dd>파이널 판타지 X 인터내셔널 (스퀘어, PS2)</dd><dt>장르</dt><dd>RPG</dd><dt>바탕</dt><dd>한국판 ISO (SLPM-67513)</dd><dt>추가 기능</dt><dd>치트 메뉴 21항목, 전투 후 파티 전원 AP</dd></dl></div></div></section>
+<section id="ap"><div class="wrap"><h2>전원 AP (항상 켜짐)</h2><p>원래 게임은 전투가 끝날 때 <b>한 번도 행동하지 않았거나 전투불능인 캐릭터</b>의 AP를 0으로 되돌립니다. 그래서 일곱 명을 키우려면 전투마다 캐릭터를 하나씩 교대로 내보내야 했습니다.</p><p>이 패치는 그 판정을 바꿔, <b>파티에 합류한 캐릭터라면 대기 멤버·전투불능 상태여도 모두 AP를 받습니다</b>. 치트 메뉴의 AP 배율과 같이 쓰면 스피어 판을 훨씬 빨리 채울 수 있습니다. 이 기능은 끌 수 없습니다(끄고 싶으면 치트 없이 원본 ISO로 하세요).</p></div></section>
+<section id="cheat"><div class="wrap"><h2>치트 메뉴</h2><p>필드에서 <b>△로 메뉴를 연 뒤 SELECT</b>를 누르면 「치트 메뉴」가 뜹니다. ↑↓로 고르고, ←→로 값을 바꾸고, ○로 실행합니다. SELECT나 ×로 닫습니다. 메뉴가 열려 있는 동안 원래 메뉴는 움직이지 않습니다.</p>
+<h3>설정 (←→로 변경)</h3><table class="dream wide"><tbody>
+<tr><th>AP 배율</th><td>1~5배. 적을 쓰러뜨려 얻는 AP에 곱합니다. 더블 AP·트리플 AP 어빌리티와 겹칩니다.</td></tr>
+<tr><th>길 배율</th><td>1~5배. 전투로 얻는 길에 곱합니다 (최대 999,999,999).</td></tr>
+<tr><th>전투 HP MP 무한</th><td>전투 중 아군 HP·MP가 계속 최대로 유지됩니다(전투불능이 된 캐릭터는 되살리지 않음).</td></tr>
+<tr><th>오버드라이브 항상 최대</th><td>전투 중 아군 오버드라이브 게이지가 항상 가득 찹니다.</td></tr>
+<tr><th>데미지 한계 돌파</th><td>모든 공격의 데미지 상한이 9,999에서 99,999가 됩니다(무기 어빌리티 없이도).</td></tr>
+<tr><th>적 1타 처치</th><td>전투 중 적 HP가 1로 고정됩니다.</td></tr>
+<tr><th>아이템 99개 유지</th><td>가지고 있는 일반 아이템이 써도 99개로 유지됩니다.</td></tr>
+<tr><th>인카운터</th><td>보통 / 없음 / 2배. 없음은 랜덤 전투가 일어나지 않고(이벤트 전투는 그대로), 2배는 랜덤 전투가 약 2배 자주 일어납니다.</td></tr>
+<tr><th>전투 속도</th><td>1~4배. 전투 진행(애니메이션·턴)을 그만큼 빠르게 돌립니다. 소리는 그대로입니다.</td></tr>
+<tr><th>아이템 드롭 100%</th><td>적이 드롭 아이템을 가지고 있으면 항상 떨어뜨립니다.</td></tr>
+<tr><th>영입할 선수</th><td>블리츠볼 「선수 영입」으로 데려올 선수: Brother, Wedge, Nimrook, Ropp, Nav Guado, Larbeight, Kiyuri, Jumal (블리츠볼 상위권 선수들).</td></tr>
+</tbody></table>
+<h3>실행 (○로 실행)</h3><table class="dream wide"><tbody>
+<tr><th>모든 아이템 99개</th><td>포션부터 스피어류(파워·마나·스피드·어빌리티·키 스피어 Lv.1~4·마스터·클리어·텔레포트·워프 등)까지 일반 아이템 112종을 모두 99개씩 받습니다.</td></tr>
+<tr><th>길 최대</th><td>소지 길이 999,999,999가 됩니다.</td></tr>
+<tr><th>모든 오버드라이브 기술</th><td>오버드라이브를 모두 얻은 상태로 만듭니다(코드브레이커 「All Overdrives」 코드와 같은 값).</td></tr>
+<tr><th>알베도어 사전 전부</th><td>알베도어 사전을 전부 얻은 상태가 됩니다.</td></tr>
+<tr><th>모든 키 아이템</th><td>키 아이템을 전부 얻습니다.</td></tr>
+<tr><th>몬스터 전부 포획 10마리</th><td>몬스터 아레나의 포획 수를 모든 몬스터 10마리로 만듭니다.</td></tr>
+<tr><th>비공정 목적지 전부</th><td>비공정의 목적지를 모두 엽니다.</td></tr>
+<tr><th>번개 피하기 200회</th><td>번개 평원의 번개 피하기 횟수(누적·연속)를 200으로 만듭니다.</td></tr>
+<tr><th>블리츠볼 선수 영입</th><td>위에서 고른 선수를 비사이드 오럭스에 바로 넣습니다. 상대 팀은 다른 자유계약 선수로 빈자리를 채워 6명을 유지합니다. 오럭스가 8명으로 꽉 차 있으면 티다·와카를 뺀 마지막 선수와 맞바꿉니다.</td></tr>
+<tr><th>블리츠볼 우리팀 Lv99</th><td>오럭스 선수 전원의 블리츠볼 레벨을 99로 올립니다.</td></tr>
+<tr><th>칠요의 문장 인장 전부</th><td>일곱 캐릭터의 최강 무기(칠요의 무기)를 강화하는 문장·인장을 모두 얻습니다. 나비 잡기·번개 피하기·초코보 경주 같은 미니게임 보상을 건너뛸 수 있습니다.</td></tr>
+</tbody></table>
+<p class="note">처음 값은 모두 원래 게임과 같은 값(1배·끔·보통)이라, 메뉴를 건드리지 않으면 원래 게임과 똑같이 동작합니다(전원 AP만 예외). 설정은 게임을 켤 때마다 처음 값으로 돌아갑니다(세이브에 저장되지 않음). 실행 항목은 진행 플래그를 한꺼번에 바꾸므로, <b>쓰기 전에 세이브</b>해 두세요.</p></div></section>
+<section id="sphere"><div class="wrap"><h2>스피어 판 쉬운 가이드</h2>
+<h3>결론부터</h3><ul><li>처음이면 <b>표준(오리지널) 스피어 판</b>이 쉽습니다. 각 캐릭터가 자기 길 위에서 시작하고, 그 길만 따라가면 역할(유나=백마법, 루루=흑마법, 아론=탱커, 티다=속도)대로 자랍니다.</li><li>순서: ① 자기 길을 끝까지 → ② 잠금(키 스피어)을 열고 남의 길로 → ③ 막바지에 약한 칸을 강한 칸으로 바꾸기(능력치 최대).</li><li>치트에서 AP 배율을 올리고 「모든 아이템 99개」를 실행하면 스피어가 99개씩 생기므로, 막히는 곳은 <b>마스터 스피어</b>로 바로 켜면 됩니다.</li></ul>
+<h3>기본 원리 3줄</h3><ol><li>전투에서 <b>AP</b>를 모으면 <b>스피어 레벨(S.Lv)</b>이 오릅니다.</li><li>S.Lv 1개로 판 위에서 <b>한 칸 이동</b>합니다. 이미 켜진 칸 위로는 한 번에 최대 4칸까지 건너갈 수 있습니다.</li><li>칸에 <b>맞는 종류의 스피어를 써서 켜면</b> 그 능력치·기술이 영구히 붙습니다. 이동(S.Lv)과 켜기(스피어)는 따로입니다.</li></ol>
+<h3>스피어 종류</h3><table class="dream wide"><tbody>
+<tr><th>파워 스피어</th><td>HP·힘·방어 칸 켜기</td></tr>
+<tr><th>마나 스피어</th><td>MP·마력·마법방어 칸 켜기</td></tr>
+<tr><th>스피드 스피어</th><td>민첩·회피·명중 칸 켜기</td></tr>
+<tr><th>어빌리티 스피어</th><td>기술·마법 칸 켜기</td></tr>
+<tr><th>포춘 스피어</th><td>운 칸 켜기</td></tr>
+<tr><th>키 스피어 Lv.1~4</th><td>같은 레벨의 잠금 칸을 부숨 → 다른 캐릭터 길로 넘어갈 수 있음</td></tr>
+<tr><th>리턴·프렌드·텔레포트·워프</th><td>순간이동. 리턴=자기가 켰던 칸으로, 프렌드=동료가 있는 칸으로, 텔레포트=동료가 켰던 칸으로, 워프=아무 칸으로</td></tr>
+<tr><th>어트리뷰트·스킬·스페셜·백마법·흑마법</th><td>동료가 이미 켠 같은 종류 칸을 멀리서도 켜기</td></tr>
+<tr><th>마스터 스피어</th><td>아무 칸이나 켜기(동료가 안 켠 칸도 가능)</td></tr>
+<tr><th>클리어 스피어</th><td>능력치 칸을 지워 빈칸으로 만들기(기술·잠금 칸은 못 지움)</td></tr>
+<tr><th>HP·힘·방어… 스피어</th><td>빈칸에 새 능력치 칸(+4 등)을 만들기</td></tr>
+</tbody></table>
+<h3>표준 판과 엑스퍼트 판</h3><p>표준은 각자 자기 길에서 시작하고 약 860칸, 엑스퍼트(인터내셔널판에서 추가)는 전원이 한가운데서 시작하고 약 720칸이라 계획이 필요하고 능력치 최대치에 조금 불리합니다. 한 번 고르면 도중에 바꿀 수 없습니다. 스피어 판을 열었을 때 캐릭터들이 한가운데 모여 있으면 엑스퍼트입니다.</p>
+<h3>캐릭터별 추천 경로</h3><table class="dream wide"><tbody>
+<tr><th>티다</th><td>자기 길(속도·시간 마법·물리) → 아론 길(힘). <b>헤이스트</b>를 최우선으로.</td></tr>
+<tr><th>유나</th><td>자기 길(백마법·소환) → 루루 길(흑마법). 마력이 높아 흑마법도 잘 씁니다.</td></tr>
+<tr><th>루루</th><td>자기 길(흑마법) → 유나 길(백마법). 유나와 서로 길을 바꿉니다.</td></tr>
+<tr><th>아론</th><td>자기 길(힘·HP·방어·브레이크 기술) → 와카 또는 티다 길.</td></tr>
+<tr><th>와카</th><td>자기 길(명중·상태이상 공격) → 아론 길(힘).</td></tr>
+<tr><th>리쿠</th><td>자기 길(민첩·훔치기·아이템 사용) → 티다 길(속도) 또는 루루 길.</td></tr>
+<tr><th>키마리</th><td>정해진 길이 없습니다. 먼저 리쿠 길의 <b>훔치기·사용</b>을 따고(리쿠 합류 전에 쓸 수 있음), 이후 유나·루루 길로 마법사. 가가제트산 키마리 혼자 싸우는 전투에서 Lv.3 키 스피어를 훔칠 수 있습니다.</td></tr>
+</tbody></table>
+<h3>막바지: 능력치 최대(255)</h3><p>클리어 스피어로 +1·+2 같은 약한 칸을 지우고, 빈칸에 힘 스피어 등으로 <b>+4 칸</b>을 만든 뒤 켭니다. 새로 만든 칸은 모든 캐릭터의 판에 똑같이 생깁니다. 원래 클리어 스피어는 몬스터 아레나에서 1만 길에 사야 하지만, 치트의 「모든 아이템 99개」로 바로 얻을 수 있습니다. 우선순위는 힘 → 방어 → 마법방어 → 민첩(170 정도면 충분) 순을 많이 추천합니다.</p>
+<h3>자주 막히는 부분</h3><ul><li><b>이동이 안 된다</b> → S.Lv가 0입니다. 전투를 더 하세요(AP 배율 치트).</li><li><b>켜지지 않는다</b> → 칸과 스피어 종류가 안 맞습니다(위 표).</li><li><b>잠금 칸 앞에서 멈춤</b> → 같은 레벨 키 스피어가 필요합니다.</li><li><b>너무 멀다</b> → 텔레포트·워프 스피어로 이동.</li><li><b>엉뚱한 길로 갔다</b> → 괜찮습니다. 나중에 얼마든지 메울 수 있어서 망치는 방법이 없습니다.</li></ul>
+<p class="note">가이드 출처: <a href="https://ffwalkthrough2026.pages.dev/final-fantasy-10/sphere-grid" target="_blank" rel="noopener">FF Walkthrough</a>, <a href="https://game8.co/games/Final-Fantasy-X/archives/270800" target="_blank" rel="noopener">Game8</a>, <a href="https://jegged.com/Games/Final-Fantasy-X/Items/Spheres.html" target="_blank" rel="noopener">Jegged (스피어)</a>, <a href="https://mail.jegged.com/Games/Final-Fantasy-X/Tips-and-Tricks/Stat-Maxing.html" target="_blank" rel="noopener">Jegged (능력치 최대)</a>, <a href="https://gamerguides.com/final-fantasy-x-hd/guide/sphere-grid/spheres-list/clear-sphere" target="_blank" rel="noopener">GamerGuides</a>, Steam·Reddit 토론. 스피어 이름은 영문판 기준이라 한국판 표기와 조금 다를 수 있습니다.</p></div></section>
+<section id="shots"><div class="wrap"><h2>화면</h2><div class="shots"><figure><img src="img/menu.png" alt="치트 메뉴 위쪽" width="512" height="416" loading="lazy"><figcaption>치트 메뉴 (메뉴에서 SELECT)</figcaption></figure><figure><img src="img/menu2.png" alt="치트 메뉴 아래쪽 실행 항목" width="512" height="416" loading="lazy"><figcaption>실행 항목 (스크롤)</figcaption></figure><figure><img src="img/mainmenu.png" alt="원래 메뉴 화면" width="512" height="416" loading="lazy"><figcaption>닫으면 원래 메뉴로</figcaption></figure></div></div></section>
+<section id="howto"><div class="wrap"><h2>적용 방법</h2><ol class="steps"><li><h4>한국판 ISO 준비</h4><p>파이널 판타지 X 인터내셔널 한국판(SLPM-67513) ISO가 필요합니다. 크기 4,615,176,192바이트, MD5 <code>d393791519de62a29923c8d4a6af89ce</code>여야 합니다. CHD 파일만 있다면 MAME의 <code>chdman extractdvd -i 파일.chd -o 파일.iso</code>로 ISO로 바꿉니다.</p></li><li><h4>패치 적용</h4><p>ISO에 <code>FFX_International_KR_Cheat_v0.4.xdelta</code>를 xdelta로 적용합니다. PC에서는 Delta Patcher나 xdelta3(<code>xdelta3 -d -s 원본.iso 패치.xdelta 결과.iso</code>)를 쓰면 됩니다. 결과 ISO CRC32는 <code>62BA8051</code>입니다.</p></li><li><h4>실행</h4><p>PS2 에뮬레이터(PCSX2, AetherSX2·NetherSX2 등)에서 실행합니다. 게임 안에서 메뉴(△) → SELECT를 눌러 「치트 메뉴 v0.4」가 뜨면 제대로 적용된 것입니다. 원본에서 쓰던 세이브를 그대로 쓸 수 있습니다.</p></li></ol>
+ <div class="btns"><a class="btn main" href="patches/FFX_International_KR_Cheat_v0.4.xdelta" download>xdelta 받기 (v0.4)</a><a class="btn sub" href="patches/FFX_International_KR_AllAP_v0.1.xdelta" download>전원 AP만 (v0.1)</a></div>
+ <p class="note">「전원 AP만」은 치트 메뉴 없이 전투 후 파티 전원 AP 획득만 들어간 패치입니다(결과 CRC32 <code>838120D1</code>). 둘 다 원본 ISO에 적용합니다. 패치를 적용하면 게임 코드 위치가 바뀌므로, PCSX2용 치트 파일(pnach)은 맞지 않을 수 있습니다.</p></div></section>
+<section id="known"><div class="wrap"><h2>알려진 문제</h2><ul>
+<li>치트 메뉴는 △ 메뉴 화면(위쪽에 도움말 줄이 보이는 화면)에서만 열립니다. 메뉴가 잠겨 있는 프롤로그(자나르칸드)에서는 열 수 없습니다.</li>
+<li>타이틀 화면에는 버전이 표시되지 않습니다. 버전은 파일 이름과 치트 메뉴 제목(v0.4)에 있습니다.</li>
+<li>나비 잡기 시간 무한은 넣지 못했습니다(타이머가 장면마다 다른 메모리에 있음). 대신 그 보상인 키마리의 인장은 「칠요의 문장 인장 전부」로 얻을 수 있습니다.</li>
+<li>블리츠볼 「항상 승리」는 없습니다. 대신 상위권 선수 영입과 우리팀 Lv99를 넣었습니다. 선수 이름은 영문으로 표시합니다.</li>
+<li>시험한 것: 메뉴 표시·조작, 전원 AP, AP·길 배율(실제 전투에서 3배·5배 확인), 드롭 100%(드롭률 1/255로 낮춰 비교), 전투 HP·OD·1타 처치, 전투 속도, 선수 영입, 문장·인장, 패치 ISO 부팅.</li>
+<li>시험하지 못한 것: 인카운터 없음/2배의 실제 빈도(랜덤 전투가 있는 지역에서 미확인), 몬스터 포획·비공정·번개 피하기를 해당 장면에서 쓴 결과(주소는 두 자료로 대조함), 실기 PS2. 오픈소스 에뮬레이터 Play!로만 시험했습니다. 이상한 점이 있으면 제보해 주세요.</li>
+<li>「모든 키 아이템」은 키 아이템 칸을 한꺼번에 채우므로 이야기 순서와 맞지 않는 아이템이 생길 수 있습니다.</li>
+</ul><p class="bugrep"><a href="../request/">버그 제보하기 →</a></p></div></section>
+<section id="log"><div class="wrap"><h2>바뀐 점</h2>
+<div class="chg"><b>v0.4</b> <span class="date">2026-11-15</span><ul><li>블리츠볼 선수 영입(8명 중 선택), 칠요의 문장·인장 전부 추가</li><li>「모든 아이템 99개」에 클리어·마스터·텔레포트·워프 스피어 등 추가 (112종 전부)</li></ul></div>
+<div class="chg"><b>v0.3</b> <span class="date">2026-11-15</span><ul><li>인카운터(보통/없음/2배), 전투 속도 1~4배, 아이템 드롭 100% 추가</li><li>몬스터 전부 포획, 비공정 목적지 전부, 번개 피하기 200회, 블리츠볼 우리팀 Lv99 추가</li></ul></div>
+<div class="chg"><b>v0.2</b> <span class="date">2026-11-15</span><ul><li>치트 메뉴 추가(메뉴에서 SELECT): AP·길 배율 1~5배, 전투 HP·MP 무한, 오버드라이브 최대, 데미지 한계 돌파, 적 1타 처치, 아이템 99개 유지, 모든 아이템·길 최대·오버드라이브 기술·알베도어 사전·키 아이템</li></ul></div>
+<div class="chg"><b>v0.1</b> <span class="date">2026-11-15</span><ul><li>전투 후 파티 전원 AP 획득</li></ul></div></div></section>
+<section><div class="wrap"><p class="note">코드: C(mips gcc) + 어셈블리. 분석·검수: Play! 에뮬레이터.</p></div></section>
+</main>
+<div class="support"><div class="wrap"><div class="sbox"><p><b>이 패치가 도움이 되셨나요?</b> 후원해 주시면 다음 작품 작업과 버그 수정을 이어 가는 데 쓰겠습니다.<br><small>이 페이지의 후원은 치트 패치 제작에 대한 것입니다. 한국어 번역은 정식 한국어판의 것입니다.</small></p><a class="btn sub" href="https://buymeacoffee.com/sneskorean" target="_blank" rel="noopener">☕ 후원하기</a></div></div></div>
+<footer><div class="wrap"><ul><li>비공식 팬 패치입니다. 원작의 권리는 스퀘어 에닉스에 있습니다.</li><li>ISO 파일은 배포하지 않습니다. 직접 가진 게임에서 뽑은 ISO에 패치를 적용해 주세요.</li></ul><p class="flinks"><a href="../">SNES 한글화</a><span>·</span><a href="../request/">요청·제보</a><span>·</span><a href="https://buymeacoffee.com/sneskorean" target="_blank" rel="noopener">☕ 후원하기</a></p></div></footer>
+<script src="../assets/site.js"></script>
+</body></html>
