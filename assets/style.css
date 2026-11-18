@@ -37,6 +37,7 @@ ul{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
 .dream th{width:5.5em;color:var(--red);font-family:"Nanum Myeongjo",serif}
 .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .shots figure{margin:0}.shots img{width:100%;height:auto;image-rendering:pixelated;border:1px solid var(--line);display:block}
+.shots figure.wide{grid-column:span 2}
 .shots figcaption{font-size:13px;color:var(--ink2);text-align:center;margin-top:4px}
 .steps{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:14px}
 .steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);padding:16px 18px 16px 70px;position:relative}

@@ -26,3 +26,40 @@
       if(k>=0){var a=links[k],w=a.parentNode;w.scrollLeft=a.offsetLeft-w.clientWidth/2+a.offsetWidth/2}}}
   window.addEventListener('scroll',spy,{passive:true});window.addEventListener('resize',spy);spy();
 })();
+/* 화면 그림 크게 보기: .shots·.hero 그림을 누르면 화면에 맞는 가장 큰 정수 배율(도트가 뭉개지지 않게)로 띄운다.
+   그림을 누르면 원본 1배 ↔ 확대 전환, 바깥·× 버튼·Esc로 닫기, ←→로 같은 페이지의 앞뒤 그림 */
+(function(){
+  var imgs=[].slice.call(document.querySelectorAll('.shots img, .hero figure img')); if(!imgs.length)return;
+  var css=document.createElement('style');
+  css.textContent='.lb{position:fixed;inset:0;z-index:999;background:rgba(20,16,12,.92);display:none;overflow:auto;-webkit-overflow-scrolling:touch}'+
+   '.lb.on{display:block}.lb .in{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 8px 16px;box-sizing:border-box}'+
+   '.lb img{image-rendering:pixelated;max-width:none;cursor:zoom-in;box-shadow:0 4px 24px rgba(0,0,0,.5);background:#000}.lb img.fit{cursor:zoom-out}'+
+   '.lb p{color:#eee;font-size:14px;margin:10px 0 0;text-align:center}.lb p a{color:#f4c06a}'+
+   '.lb button{position:fixed;top:8px;background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:6px;font-size:20px;line-height:1;padding:6px 12px;cursor:pointer}'+
+   '.lb .x{right:10px}.lb .pv{left:10px}.lb .nx{left:58px}'+
+   '.shots img,.hero figure img{cursor:zoom-in}';
+  document.head.appendChild(css);
+  var lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-label','그림 크게 보기');
+  lb.innerHTML='<div class="in"><img alt=""><p></p></div><button class="x" aria-label="닫기">×</button><button class="pv" aria-label="이전 그림">‹</button><button class="nx" aria-label="다음 그림">›</button>';
+  document.body.appendChild(lb);
+  var big=lb.querySelector('img'),cap=lb.querySelector('p'),idx=0,fit=true;
+  function size(){var w=big.naturalWidth,h=big.naturalHeight;if(!w)return;
+    var s=fit?Math.max(1,Math.floor(Math.min((window.innerWidth-16)/w,(window.innerHeight-90)/h))):1;
+    if(fit&&s<1.01){s=Math.min((window.innerWidth-16)/w,1)}
+    big.style.width=Math.round(w*s)+'px';big.style.height=Math.round(h*s)+'px';big.classList.toggle('fit',fit)}
+  function show(i){idx=(i+imgs.length)%imgs.length;var im=imgs[idx];fit=true;
+    var f=im.closest('figure'),fc=f&&f.querySelector('figcaption');
+    big.onload=size;big.src=im.currentSrc||im.src;big.alt=im.alt;
+    cap.innerHTML=(fc?fc.textContent+' · ':'')+'<a href="'+big.src+'" target="_blank" rel="noopener">원본 파일 열기</a> · 그림을 누르면 1배/확대 전환';
+    lb.classList.add('on');document.documentElement.style.overflow='hidden';if(big.complete)size()}
+  function close(){lb.classList.remove('on');document.documentElement.style.overflow=''}
+  imgs.forEach(function(im,i){im.addEventListener('click',function(e){e.preventDefault();show(i)})});
+  big.addEventListener('click',function(e){e.stopPropagation();fit=!fit;size()});
+  lb.querySelector('.x').addEventListener('click',close);
+  lb.querySelector('.pv').addEventListener('click',function(e){e.stopPropagation();show(idx-1)});
+  lb.querySelector('.nx').addEventListener('click',function(e){e.stopPropagation();show(idx+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.className==='in')close()});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;
+    if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(idx-1);else if(e.key==='ArrowRight')show(idx+1)});
+  window.addEventListener('resize',function(){if(lb.classList.contains('on'))size()});
+})();
